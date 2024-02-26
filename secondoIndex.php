@@ -1,6 +1,7 @@
 <?php
-// name="nome"
-$testo = $_POST["nome"];
+    $censored = $_POST['censored'];
+    $paragrafo = $_POST['paragrafo'];
+    $paragrafo_censurato = str_replace($censored, '***', $paragrafo);
 ?>
 
 <!DOCTYPE html>
@@ -12,19 +13,15 @@ $testo = $_POST["nome"];
 </head>
 <body>
 
-    <?php
-        if($testo){
-            // str_replace sostituisce "tutti" con *** in "$testo"
-            $censored = str_replace("tutti", "***", $testo);
+    <p>
+        il paragrafo è: <?php echo $paragrafo ?> <br>
+        la sua lunghezza è: <?php echo strlen($paragrafo) ?>
+    </p>
+        
+    <p>
+        la sua censura è: <?php echo ($paragrafo_censurato) ?> <br>
+        la sua lunghezza è: <?php echo strlen($paragrafo_censurato) ?>
+    </p>
 
-            // echo stampa il testo censurato
-            echo "<p>$censored</p>";
-
-            // strlen ritorna la lunghezza del $testo
-            $lunghezza = strlen($testo);
-            echo "<p>Il testo è lungo: $lunghezza</p>";
-        }
-    ?>
-    
 </body>
 </html>
